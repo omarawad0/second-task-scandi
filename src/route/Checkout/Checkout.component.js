@@ -3,7 +3,7 @@ import { ContentWrapper } from 'Component/ContentWrapper/ContentWrapper.componen
 import CheckoutProgress from 'src/CheckoutProgress/CheckoutProgress';
 class Checkout extends SourceCheckout {
 
-    renderSteps = () => {
+    renderProgress = () => {
         const {checkoutStep} = this.props
         return (
             <CheckoutProgress stepMap={this.stepMap} currentStep={checkoutStep}/>
@@ -16,7 +16,7 @@ class Checkout extends SourceCheckout {
             <>
             
             <main block="Checkout">
-                {this.renderSteps()}
+                {this.renderProgress()}
                 <ContentWrapper
                   wrapperMix={ { block: 'Checkout', elem: 'Wrapper' } }
                   label={ __('Checkout page') }

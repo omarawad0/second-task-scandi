@@ -1,11 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from "./Step.module.css"
 import classnames from "classnames";
- class Step extends Component {
+import Checkmark from "./Checkmark.svg"
+ class Step extends React.PureComponent {
     circleClasses = (currentStepIndex) => {
         return classnames(styles.circle, {
             [styles.currentStep] : currentStepIndex >= this.props.numberOfStep,
          })
+    }
+
+    stepValue = (currentStepIndex) => {
+        if(currentStepIndex > this.props.numberOfStep) {
+            return <img src={Checkmark} alt="CHeckmark"></img>
+        } else {
+            return this.props.numberOfStep + 1
+        }
     }
 
     lineClasses = (currentStepIndex) => {
@@ -29,7 +38,7 @@ import classnames from "classnames";
                 <div className={this.circleClasses(currentStepIndex)}>
                     <span
                     >
-                    {this.props.numberOfStep + 1}
+                    {this.stepValue(currentStepIndex)}
                     </span>
                 </div>
                 <div className={styles.title}>
